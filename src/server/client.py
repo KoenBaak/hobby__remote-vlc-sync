@@ -24,7 +24,7 @@ class Client:
         raw_msg_length = self.conn.recv(4)
         if not raw_msg_length:
             return None
-        msg_length = struct.unpack(">I", raw_msg_length)
+        msg_length = struct.unpack(">I", raw_msg_length)[0]
         raw_msg = self.recv_amount(msg_length)
         if raw_msg is None:
             return None

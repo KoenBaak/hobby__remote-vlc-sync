@@ -14,7 +14,6 @@ RED = lambda x: "\033[31m" + x + "\033[0m"
 GREEN = lambda x: "\033[32m" + x + "\033[0m"
 
 
-
 class MyServer:
     def __init__(self):
         self.sock = socket(AF_INET, SOCK_STREAM)
