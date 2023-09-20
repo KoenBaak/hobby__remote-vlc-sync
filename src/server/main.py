@@ -1,15 +1,18 @@
 from socket import socket, AF_INET, SOCK_STREAM
 import threading
 
+# -------------------------------------------------------------------------------
 from room import Room
 from client import Client
 
+
 IP = "localhost"
-PORT = 5000
+PORT = 6000
 MAX_PART = 10  # maximum number of clients
 YELLOW = lambda x: "\033[93m" + x + "\033[0m"  # for nice terminal printing
 RED = lambda x: "\033[31m" + x + "\033[0m"
 GREEN = lambda x: "\033[32m" + x + "\033[0m"
+
 
 
 class MyServer:
@@ -60,7 +63,8 @@ class MyServer:
         self.nclients += 1
         r.broadcast("room_enter;;{} has entered the room".format(new_client.name))
         r.add_client(new_client)
-        new_client.send("succes;;" + ";;".join(c.name for c in r.clients))
+        resp = "succes;;" + ";;".join(c.name for c in r.clients)
+        new_client.conn.sendall(resp.encode())
         threading.Thread(target=new_client.recv_thread).start()
 
     def accept(self):
@@ -89,7 +93,7 @@ class MyServer:
         # broadcast a message to all clients in target_list
         for c in target_list:
             if c != exception:
-                c.send(msg)
+                c.send_msg(msg)
 
     def remove_client(self, client):
         client.room.remove_client(client)
@@ -104,7 +108,6 @@ class MyServer:
         print("room removed: ", YELLOW(room.name))
 
 
-# -------------------------------------------------------------------------------
 if __name__ == "__main__":
     s = MyServer()
     s.accept()

@@ -2,11 +2,12 @@ from socket import socket, AF_INET, SOCK_STREAM
 import platform
 import struct
 
+# ---------external libraries----------------------------------------------------
 from PyQt5 import QtWidgets, QtGui, QtCore
 import vlc
 
 
-SERVER_ADDR = ("localhost", 5000)
+SERVER_ADDR = ("localhost", 6000)
 
 
 class MySlider(QtWidgets.QSlider):
@@ -45,9 +46,6 @@ class MySlider(QtWidgets.QSlider):
             sliderMax - sliderMin,
             opt.upsideDown,
         )
-
-
-# -------------------------------------------------------------------------------
 
 
 class Player(QtWidgets.QMainWindow):
@@ -206,8 +204,6 @@ class Player(QtWidgets.QMainWindow):
             self.playbutton.setText("Pause")
             self.playing = True
             self.timer.start()
-        # print(self.media.get_duration())
-        # print(self.media_player.video_get_spu_description())
 
     def update_ui(self):
         # update the user interface

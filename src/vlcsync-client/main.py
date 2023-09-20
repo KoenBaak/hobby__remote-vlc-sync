@@ -2,17 +2,16 @@ import os
 import threading
 import sys
 
-
+# -----------external libraries--------------------------------------------------
 from PyQt5 import QtWidgets
 
-
+# -----------own libraries-------------------------------------------------------
 from player import Player
 
 
 INDENT = "    "  # indentation for menu items
 
-# define some global lambda functions,
-# that can be used to format terminal output
+# define some global lambda functions, that can be used to format terminal output
 RED = lambda x: "\033[31m" + x + "\033[0m"
 GREEN = lambda x: "\033[32m" + x + "\033[0m"
 YELLOW = lambda x: "\033[93m" + x + "\033[0m"
@@ -118,7 +117,6 @@ def main_menu():
     print(RED("bye :)"))
 
 
-# -------------------------------------------------------------------------------
 if __name__ == "__main__":
     if "darwin" in sys.platform:
         import subprocess
