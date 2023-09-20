@@ -1,2 +1,2 @@
-# hobby__remote_vlc_sync
+# hobby__remote-vlc-sync
 Watch Movies/Shows with your friends remotely by syncing VLC players
