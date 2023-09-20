@@ -2,7 +2,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 import platform
 import struct
 
-# ---------external libraries----------------------------------------------------
+
 from PyQt5 import QtWidgets, QtGui, QtCore
 import vlc
 
